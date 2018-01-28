@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+ 
+<!DOCTYPE mycat:server SYSTEM "server.dtd">
+<mycat:server xmlns:mycat="http://org.opencloudb/">
+	<system>
+	<property name="defaultSqlParser">druidparser</property>
+	<property name="charset">utf8mb4</property>
+    
+	</system>
+
+ 
+	 <user name="recsys">
+		<property name="password">qbao.2</property>
+		<property name="schemas">recommend_schema</property>
+		<property name="benchmark">1000</property>
+	</user>
+							
+ 
+	<user name="other">
+		<property name="password">qbao.3</property>
+		<property name="schemas">
+			agent_schema,auction_schema,busi_plat_schema,hyip_schema,
+			hyiptask_schema,logs_schema,maxwell_schema,merchant_schema,
+			merchant_middle_schema,monitor_schema,oc1_schema,vc_schema,
+			unite_schema,task1_schema,search_schema,qbaochou_schema,qianwang365_schema,tweet_schema 
+		</property>
+		<property name="benchmark">1000</property>
+	</user>
+
+</mycat:server>
+

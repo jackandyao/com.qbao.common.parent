@@ -1,0 +1,38 @@
+<?xml version="1.0"?>
+<!DOCTYPE mycat:schema SYSTEM "schema.dtd">
+<mycat:schema xmlns:mycat="http://org.opencloudb/">
+    <!--name 定义mycat中的逻辑库和mysql中的database概念相同- -->
+    <!--checkSQLschema 其中checkSQLschema表明是否检查并过滤SQL中包含schema的情况，
+    	如逻辑库为 search，则可能写为select * from search.user，此时会自动过滤search， SQL变为select * from user，
+    	若不会出现上述写法，则可以关闭属性为false  -->
+   <!--sqlMaxLimit默认返回的最大记录数限制， MyCat1.4版本里面，用户的Limit参数会覆盖掉MyCat的sqlMaxLimit默认设置  -->
+	<schema name="base_user_schema" checkSQLschema="false" sqlMaxLimit="100" dataNode="base_user_datanode"/>
+	<!-- dataNode 中的 name 数据表示节点名称， dataHost表示数据主机名称， database表示该节点要路由的数据库的名称 -->
+	<dataNode name="base_user_datanode" dataHost="base_user_datahost" database="base_user" />
+	<!-- dataHost配置的是实际的后端数据库集群（当然，也可以是非集群） -->
+	<!-- 注意： schema中的每一个dataHost中的host属性值必须唯一，否则会出现主从在所有dataHost中全部切换的现象 -->
+	<!-- 注意:定义数据主机base_user_datahost，只连接到MySQL读写分离集群中的Master节点，如果不使用MyCat托管MySQL主从切换 -->
+	<!-- 参数balance决定了哪些MySQL服务器参与到读SQL的负载均衡中 -->
+	<!-- balance="0"， 为不开启读写分离，所有读操作都发送到当前可用的writeHost上-->
+	<!-- balance="1"， 全部的readHost与stand by writeHost参与select语句的负载均衡-->
+	<!-- balance="2"，所有读操作都随机的在writeHost、 readHost上分发-->
+	<!-- MyCat1.4版本中，若想支持MySQL一主一从的标准配置，并且在主节点宕机的情况下，从节点还能读取数据，则需要在MyCat里
+		配置为两个writeHost并设置balance="1" -->
+		
+	<!-- writeType="0"，所有写操作都发送到可用的writeHost上,但一般先发送到第一个配置的writeHost节点上,如果第一个挂了节点挂了以后,会继续往下一个可用的writeHost节点写入数据 -->
+	<!-- writeType="1"，仅仅对于galera for mysql集群这种多主多节点都能写入的集群起效，此时Mycat会随机选择一个
+		writeHost并写入数据，对于非galera for mysql集群，请不要配置writeType=1，会导致数据库不一致的严重问题 -->
+		
+    <!--switchType的值为1 代表可以进行主从的自动切换,这样容易导致数据不一致性  -->
+    <!--switchType的值为2 代表不可以进行主从的自动切换,需要手动来切换,一般在手动调整过mysql最新的主从状态之后,再切换mycat的主从  -->
+	<dataHost name="base_user_datahost" maxCon="500" minCon="20" balance="1"
+		writeType="0" dbType="mysql" dbDriver="native" switchType="2" slaveThreshold="100">
+		<!-- 通过show slave status检测主从状态， 当主宕机以后，发生切换，从变为主，原来的主变为从，这时候show slave
+					status就会发生错误，因为原来的主没有开启slave，不建议直接使用switch操作，而是在DB中做主从对调。 -->
+		<heartbeat>show slave status</heartbeat>
+		<writeHost host="hostM1" url="172.16.14.111:3306" user="root" password="resys123"/>
+		<writeHost host="hostS1" url="172.16.14.112:3306" user="root" password="recsys123"/>
+	    <writeHost host="hostS2" url="172.16.14.113:3306" user="root" password="recsys123"/>
+	</dataHost>
+</mycat:schema>
+

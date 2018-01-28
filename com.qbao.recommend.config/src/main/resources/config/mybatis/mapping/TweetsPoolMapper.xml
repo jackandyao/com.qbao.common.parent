@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.qbao.recommend.respositoy.mysql.dao.TweetsPoolDao">
+	<resultMap type="TweetInfo" id="TweetsPoolMap">
+		<result column="id" property="id" />
+		<result column="title" property="title" />
+		<result column="url" property="url" />
+		<result column="state" property="status" />
+		<result column="province" property="province" />
+		<result column="city" property="city" />
+		<result column="business_id" property="businessId" />
+		<result column="create_time" property="createTime" />
+		<result column="modify_time" property="updateTime" />
+	</resultMap>
+</mapper>

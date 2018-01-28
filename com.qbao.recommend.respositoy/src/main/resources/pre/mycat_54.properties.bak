@@ -1,0 +1,77 @@
+#db merchant readonly
+merchant.datasource.url = jdbc:mysql://172.16.14.54:3306/merchant?useUnicode=true&characterEncoding=UTF-8
+merchant.datasource.username = jiahongping
+merchant.datasource.password = zhpk;8045623%#!@ADCFfd
+merchant.datasource.key=merchantDataSource
+
+#db qbaochou readonly
+qbaochou.datasource.url = jdbc:mysql://172.16.14.54:3306/qbaochou?useUnicode=true&characterEncoding=UTF-8
+qbaochou.datasource.username = jiahongping
+qbaochou.datasource.password = zhpk;8045623%#!@ADCFfd
+qbaochou.datasource.key = qbaochouDataSource
+
+
+#db merchant_middle readonly
+merchant_middle.datasource.url = jdbc:mysql://172.16.14.54:3306/merchant_middle?useUnicode=true&characterEncoding=UTF-8
+merchant_middle.datasource.username = dcadmin
+merchant_middle.datasource.password = sadas3432$#%ret@!sd76
+merchant_middle.datasource.key = merchantMiddleDataSource
+
+#db recommend 10.64
+recommend.datasource.url = jdbc:mysql://172.16.14.54:3306/recommend?useUnicode=true&characterEncoding=UTF-8
+recommend.datasource.username = jiahongping
+recommend.datasource.password = zhpk;8045623%#!@ADCFfd
+recommend.datasource.key = recommendDataSource
+
+
+
+#db agent 14.135
+agent.datasource.url = jdbc:mysql://172.16.14.54:3306/agent?useUnicode=true&characterEncoding=UTF-8&zeroDateTimeBehavior=convertToNull
+agent.datasource.username = jiahongping
+agent.datasource.password = zhpk;8045623%#!@ADCFfd
+agent.datasource.key = agentDataSource
+
+
+#dcadmin@172.16.14.135_3307
+doctor.datasource.url = jdbc:mysql://172.16.14.54:3306/vc?useUnicode=true&characterEncoding=UTF-8&zeroDateTimeBehavior=convertToNull
+doctor.datasource.username = jiahongping
+doctor.datasource.password = zhpk;8045623%#!@ADCFfd
+doctor.datasource.key = doctorDataSource
+
+
+#user black list 172.16.8.38
+user.blacklist.datasource.url = jdbc:mysql://172.16.14.54:3306/qianwang365?useUnicode=true&characterEncoding=UTF-8&zeroDateTimeBehavior=convertToNull
+user.blacklist.datasource.username = jiahongping
+user.blacklist.datasource.password = zhpk;8045623%#!@ADCFfd
+user.blacklist.datasource.key = userBlacklistDataSource
+
+
+#shop transfer blacklist 172.16.8.38
+shop.blacklist.datasource.url = jdbc:mysql://172.16.14.54:3306/hyip?useUnicode=true&characterEncoding=UTF-8&zeroDateTimeBehavior=convertToNull
+shop.blacklist.datasource.username = jiahongping
+shop.blacklist.datasource.password = zhpk;8045623%#!@ADCFfd
+shop.blacklist.datasource.key = shopBlacklistDataSource
+
+#Hyip Task 14.107 
+hyip.task.datasource.url = jdbc:mysql://172.16.14.54:3306/hyiptask?useUnicode=true&characterEncoding=UTF-8
+hyip.task.datasource.username = dcadmin
+hyip.task.datasource.password = sadas3432$#%ret@!sd76
+hyip.task.datasource.key = hyipTaskDataSource
+
+#task.activity
+task.activity.datasource.url = jdbc:mysql://172.16.14.54:3306/task1?zeroDateTimeBehavior=convertToNull&useUnicode=true&characterEncoding=UTF-8
+task.activity.datasource.username = dcadmin
+task.activity.datasource.password = sadas3432$#%ret@!sd76
+task.activity.datasource.key = taskActivityDataSource
+
+#tweetinfo
+tweetinfo.datasource.url = jdbc:mysql://172.16.14.54:3306/tweet?zeroDateTimeBehavior=convertToNull&useUnicode=true&characterEncoding=UTF-8
+tweetinfo.datasource.username = dcadmin
+tweetinfo.datasource.password = sadas3432$#%ret@!sd76
+tweetinfo.datasource.key = tweetinfoDataSource
+#public 
+datasource.driverClassName = com.mysql.jdbc.Driver
+datasource.max-active=20
+datasource.max-idle=8
+datasource.min-idle=8
+datasource.initial-size=10

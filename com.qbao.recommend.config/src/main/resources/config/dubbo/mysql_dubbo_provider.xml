@@ -1,0 +1,208 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	   xmlns:dubbo="http://code.alibabatech.com/schema/dubbo"
+	   xsi:schemaLocation="
+    http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.1.xsd
+    http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.1.xsd
+    http://code.alibabatech.com/schema/dubbo http://code.alibabatech.com/schema/dubbo/dubbo.xsd
+    ">
+	<!-- 导入外部资源 -->
+	<import resource="classpath*:/dubbo-zookeeper.xml" />
+	<!-- 导入mysql依赖配置文件 -->
+	<import resource="classpath*:/mysql/spring-mysql.xml" />
+	<!-- 用dubbo协议在33306端口暴露服务 -->
+	<dubbo:protocol name="dubbo" port="33306" />
+	<!-- 声明需要暴露的服务接口 -->
+	<dubbo:service
+			interface="com.qbao.recommend.respositoy.mysql.service.IMerSpuService"
+			ref="merSpuServiceImpl" timeout="2000" retries="0" />
+	<dubbo:service
+			interface="com.qbao.recommend.respositoy.mysql.service.IAgentTaskService"
+			ref="agentTaskServiceImpl" timeout="2000" retries="0" />
+	<dubbo:service
+			interface="com.qbao.recommend.respositoy.mysql.service.IAgentTaskPushService"
+			ref="agentTaskPushServiceImpl" timeout="2000" retries="0" />
+	<dubbo:service
+			interface="com.qbao.recommend.respositoy.mysql.service.IAgentViewService"
+			ref="agentViewServiceImpl" timeout="2000" retries="0" />
+	<dubbo:service
+			interface="com.qbao.recommend.respositoy.mysql.service.IBcProductService"
+			ref="bcProductServiceImpl" timeout="2000" retries="0" />
+	<dubbo:service
+			interface="com.qbao.recommend.respositoy.mysql.service.IDoctorDataService"
+			ref="doctorDataServiceImpl" timeout="2000" retries="0" />
+	<dubbo:service
+			interface="com.qbao.recommend.respositoy.mysql.service.IHotSpuService"
+			ref="hotSpuServiceImpl" timeout="2000" retries="0" />
+	<dubbo:service
+			interface="com.qbao.recommend.respositoy.mysql.service.IHyipTransferHandService"
+			ref="hyipTransferHandServiceImpl" timeout="2000" retries="0" />
+	<dubbo:service
+			interface="com.qbao.recommend.respositoy.mysql.service.ILoginBlacklistService"
+			ref="loginBlacklistServiceImpl" timeout="2000" retries="0" />
+	<dubbo:service
+			interface="com.qbao.recommend.respositoy.mysql.service.IMerMiddleDataService"
+			ref="merMiddleDataServiceImpl" timeout="20000" retries="0" />
+	<dubbo:service
+			interface="com.qbao.recommend.respositoy.mysql.service.IProductProfileService"
+			ref="bcProductProfileServiceImpl" timeout="2000" retries="0" />
+	<dubbo:service
+			interface="com.qbao.recommend.respositoy.mysql.service.IProductProfileService"
+			ref="merProductProfileServiceImpl" timeout="2000" retries="0" />
+	<dubbo:service
+			interface="com.qbao.recommend.respositoy.mysql.service.IRecAgentGuessService"
+			ref="recAgentGuessServiceImpl" timeout="2000" retries="0" />
+	<dubbo:service
+			interface="com.qbao.recommend.respositoy.mysql.service.IRecAgentLookService"
+			ref="recAgentLookServiceImpl" timeout="2000" retries="0" />
+	<dubbo:service
+			interface="com.qbao.recommend.respositoy.mysql.service.IRecBGService"
+			ref="recBGServiceImpl" timeout="2000" retries="0" />
+	<dubbo:service
+			interface="com.qbao.recommend.respositoy.mysql.service.IRecGWJSService"
+			ref="recGWJSServiceImpl" timeout="2000" retries="0" />
+	<dubbo:service
+			interface="com.qbao.recommend.respositoy.mysql.service.IRecommendShopService"
+			ref="recommendShopServiceImpl" timeout="2000" retries="0" />
+	<dubbo:service
+			interface="com.qbao.recommend.respositoy.mysql.service.IRecRuleService"
+			ref="recRuleServiceImpl" timeout="2000" retries="0" />
+	<dubbo:service
+			interface="com.qbao.recommend.respositoy.mysql.service.IShopProfileService"
+			ref="shopProfileServiceImpl" timeout="2000" retries="0" />
+	<dubbo:service
+			interface="com.qbao.recommend.respositoy.mysql.service.IShopSearchService"
+			ref="shopSearchServiceImpl" timeout="2000" retries="0" />
+	<dubbo:service
+			interface="com.qbao.recommend.respositoy.mysql.service.IUserProfileService"
+			ref="userProfileServiceImpl" timeout="2000" retries="0" />
+	<dubbo:service
+			interface="com.qbao.recommend.respositoy.mysql.service.IUserViewBuyService"
+			ref="userViewBuyServiceImpl" timeout="2000" retries="0" />
+	<dubbo:service
+			interface="com.qbao.recommend.respositoy.mysql.service.IYouHaoHuoService"
+			ref="youHaoHuoServiceImpl" timeout="2000" retries="0" />
+	<dubbo:service
+			interface="com.qbao.recommend.respositoy.mysql.service.ILookAgainAndBuyService"
+			ref="lookAgainAndBuyServiceImpl" timeout="2000" retries="0" />
+	<dubbo:service
+			interface="com.qbao.recommend.respositoy.mysql.service.IRecommendMetadataService"
+			ref="recommendMetadataServiceImpl" timeout="2000" retries="0" />
+	<dubbo:service
+			interface="com.qbao.recommend.respositoy.mysql.service.IHyipTaskService"
+			ref="hyipTaskServiceImpl" timeout="2000" retries="0" />
+	<dubbo:service
+			interface="com.qbao.recommend.respositoy.mysql.service.ITaskActivityService"
+			ref="taskActivityServiceImpl" timeout="2000" retries="0" />
+	<dubbo:service
+			interface="com.qbao.recommend.respositoy.mysql.service.IUserScoreLevelService"
+			ref="userScoreLevelServiceImpl" timeout="2000" retries="0" />
+	<dubbo:service
+			interface="com.qbao.recommend.respositoy.mysql.service.IRecDirectoryService"
+			ref="recDirectoryServiceImpl" timeout="2000" retries="0" />
+	<dubbo:service
+			interface="com.qbao.recommend.respositoy.mysql.service.IRecUserDisService"
+			ref="recUserDisServiceImpl" timeout="2000" retries="0" />
+	<dubbo:service
+			interface="com.qbao.recommend.respositoy.mysql.service.IRecSimilaryService"
+			ref="recSimilaryServiceImpl" timeout="2000" retries="0" />
+	<dubbo:service
+			interface="com.qbao.recommend.respositoy.mysql.service.IRecLookBuyService"
+			ref="recLookBuyServiceImpl" timeout="2000" retries="0" />
+	<dubbo:service
+			interface="com.qbao.recommend.respositoy.mysql.service.IRecLookAgainService"
+			ref="recLookAgainServiceImpl" timeout="2000" retries="0" />
+	<dubbo:service
+			interface="com.qbao.recommend.respositoy.mysql.service.IRecICFService"
+			ref="recICFServiceImpl" timeout="2000" retries="0" />
+	<dubbo:service
+			interface="com.qbao.recommend.respositoy.mysql.service.IRecAgenspuService"
+			ref="recAgentspuServiceImpl" timeout="2000" retries="0" />
+
+	<dubbo:service
+			interface="com.qbao.recommend.respositoy.mysql.service.ITweetInfoService"
+			ref="tweetInfoServiceImpl" timeout="2000" retries="0" />
+	<dubbo:service
+			interface="com.qbao.recommend.respositoy.mysql.service.ITweetPoolServcie"
+			ref="tweetPoolServcieImpl" timeout="2000" retries="0" />
+
+	<dubbo:service
+			interface="com.qbao.recommend.respositoy.mysql.service.IRecTweetTRService"
+			ref="recTweetTRServiceImpl" timeout="2000" retries="0" />
+
+	<dubbo:service
+			interface="com.qbao.recommend.respositoy.mysql.service.IRecTweetDLService"
+			ref="recTweetDLServiceImpl" timeout="2000" retries="0" />
+
+	<dubbo:service
+			interface="com.qbao.recommend.respositoy.mysql.service.IRecShopViewService"
+			ref="recShopViewServiceImpl" timeout="2000" retries="0" />
+	<dubbo:service
+			interface="com.qbao.recommend.respositoy.mysql.service.IRecShopBuyService"
+			ref="recShopBuyServiceImpl" timeout="2000" retries="0" />
+	<dubbo:service
+			interface="com.qbao.recommend.respositoy.mysql.service.IRecShopICFService"
+			ref="recShopICFServiceImpl" timeout="2000" retries="0" />
+	<dubbo:service
+			interface="com.qbao.recommend.respositoy.mysql.service.IRecShopPrdService"
+			ref="recShopPrdServiceImpl" timeout="2000" retries="0" />
+	<dubbo:service
+			interface="com.qbao.recommend.respositoy.mysql.service.IRecGoodProductService"
+			ref="recGoodProductServiceImpl" timeout="2000" retries="0" />
+	<dubbo:service
+			interface="com.qbao.recommend.respositoy.mysql.service.IGRankService"
+			ref="gRankServiceImpl" timeout="2000" retries="0" />
+	<dubbo:service
+			interface="com.qbao.recommend.respositoy.mysql.service.IGRankThumbService"
+			ref="gRankThumbServiceImpl" timeout="2000" retries="0" />
+	<dubbo:service
+			interface="com.qbao.recommend.respositoy.mysql.service.IGRankReturnService"
+			ref="gRankReturnServiceImpl" timeout="2000" retries="0" />
+	<dubbo:service
+			interface="com.qbao.recommend.respositoy.mysql.service.IGRankSearchService"
+			ref="gRankSearchServiceImpl" timeout="2000" retries="0" />
+	<dubbo:service
+			interface="com.qbao.recommend.respositoy.mysql.service.IGRankFavoriteService"
+			ref="gRankFavoriteServiceImpl" timeout="2000" retries="0" />
+	<dubbo:service
+			interface="com.qbao.recommend.respositoy.mysql.service.IGRankViewService"
+			ref="gRankViewServiceImpl" timeout="2000" retries="0" />
+	<dubbo:service
+			interface="com.qbao.recommend.respositoy.mysql.service.IGRankBuyService"
+			ref="gRankBuyServiceImpl" timeout="2000" retries="0" />
+	<dubbo:service
+			interface="com.qbao.recommend.respositoy.mysql.service.IMerDirectoryService"
+			ref="merDirectoryServiceImpl" timeout="2000" retries="0" />
+	<dubbo:service
+			interface="com.qbao.recommend.respositoy.mysql.service.IHyipTaskProfitService"
+			ref="hyipTaskProfitServiceImpl" timeout="2000" retries="0" />
+	<dubbo:service
+			interface="com.qbao.recommend.respositoy.mysql.service.IUserExcludeProductJsonService"
+			ref="userExcludeProductJsonServiceImpl" timeout="2000" retries="0" />
+
+	<dubbo:service
+			interface="com.qbao.recommend.respositoy.restful.service.ILBSService"
+			ref="lBSServiceImpl" timeout="2000" retries="0" />
+	<dubbo:service
+			interface="com.qbao.recommend.respositoy.mysql.service.ICategoryService"
+			ref="categoryServiceImpl" timeout="2000" retries="0" />
+	<dubbo:service
+			interface="com.qbao.recommend.respositoy.mysql.service.IBYKeywordService"
+			ref="bYKeywordServiceImpl" timeout="2000" retries="0" />
+	<dubbo:service
+			interface="com.qbao.recommend.respositoy.mysql.service.IYouPiaoService"
+			ref="youPiaoServiceImpl" timeout="2000" retries="0" />
+	<dubbo:service
+			interface="com.qbao.recommend.respositoy.mysql.service.IMerchantGoodStatDayService"
+			ref="merchantGoodsStatDayServiceImpl" timeout="2000" retries="0" />
+	<dubbo:service
+			interface="com.qbao.recommend.respositoy.mysql.service.IGoodProductDirService"
+			ref="goodProductDirServiceImpl" timeout="2000" retries="0" />
+	<dubbo:service
+			interface="com.qbao.recommend.respositoy.restful.service.IHaohuoSearchService"
+			ref="haohuoSearchServiceImpl" timeout="2000" retries="0" />
+	<dubbo:service
+			interface="com.qbao.recommend.respositoy.mysql.service.IQbikeService"
+			ref="qbikeServiceImpl" timeout="2000" retries="0" />
+</beans>

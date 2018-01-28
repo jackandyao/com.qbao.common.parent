@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:p="http://www.springframework.org/schema/p" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xmlns:dubbo="http://code.alibabatech.com/schema/dubbo"
+	xsi:schemaLocation="
+	http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.1.xsd
+	http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.1.xsd
+	http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-3.1.xsd
+	http://code.alibabatech.com/schema/dubbo http://code.alibabatech.com/schema/dubbo/dubbo.xsd
+	">
+   <context:component-scan base-package="com.qbao.recommend.business.baogou" />
+    <!-- 具体的实现bean -->  
+   <bean id="baoGouRecommendService" class="com.qbao.recommend.business.baogou.rest.impl.BaoGouRecommendService" />
+     <!-- 提供方应用名称信息，这个相当于起一个名字，我们可以在dubbo管理页面比较直观看到暴露服务的名称 -->  
+  <!--  <dubbo:application name="taskSerivceRecommend"></dubbo:application> -->
+   <!-- 用rest协议在21880端口暴露服务 -->
+   <dubbo:protocol name="rest" port="6688"></dubbo:protocol>
+   <!-- 要暴露的服务接口 -->    
+   <dubbo:service interface="com.qbao.recommend.business.baogou.rest.IBaoGouRecommendService" ref="baoGouRecommendService"
+   timeout="2000" retries="0"/>
+<!--     <import resource="classpath*:/dubbo-zookeeper.xml" />   -->
+<!--     导入redis依赖配置文件   -->
+    <import resource="classpath*:/redis/spring-redis.xml"/> 
+    <import resource="classpath*:/dubbo/mysql_dubbo_consumer.xml"/>
+</beans>

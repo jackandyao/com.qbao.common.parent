@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.qbao.recommend.respositoy.mysql.dao.BcProductDao">
+
+	<resultMap type="SpuInfoBaogou" id="BcProductMap">
+		<result column="id" property="id" />
+		<result column="name" property="name" />
+		<result column="type" property="type" />
+		<result column="is_excess" property="isExcess" />
+		<result column="state" property="state" />
+		<result column="check_time" property="checkTime" />
+		<result column="begin_time" property="beginTime" />
+		<result column="end_time" property="endTime" />
+		<result column="valid_time" property="validTime" />
+		<result column="total_money" property="totalMoney" />
+		<result column="each_money_bak" property="eachMoneyBak" />
+		<result column="total_num" property="totalNum" />
+		<result column="min_num" property="minNum" />
+		<result column="max_num" property="maxNum" />
+		<result column="income_type" property="incomeType" />
+		<result column="income_ratio" property="incomeRatio" />
+		<result column="third_party" property="thirdParty" />
+		<result column="description" property="description" />
+		<result column="content" property="content" />
+		<result column="is_recommend" property="isRecommend" />
+		<result column="is_hot" property="isHot" />
+		<result column="create_user" property="createUser" />
+		<result column="create_time" property="createTime" />
+		<result column="modify_user" property="modifyUser" />
+		<result column="modify_time" property="modifyTime" />
+		<result column="shop_id" property="shopId" />
+		<result column="shop_name" property="shopName" />
+		<result column="spu_id" property="spuId" />
+		<result column="sku_id" property="skuId" />
+	</resultMap>
+
+
+
+</mapper>

@@ -1,0 +1,35 @@
+<ehcache xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:noNamespaceSchemaLocation="ehcache.xsd" updateCheck="true"
+	monitoring="autodetect" dynamicConfig="true">
+	<diskStore path="java.io.tmpdir" />
+	<cache name="movieFindCache" maxEntriesLocalHeap="10000"
+		maxEntriesLocalDisk="1000" eternal="false" diskSpoolBufferSizeMB="20"
+		timeToIdleSeconds="20" timeToLiveSeconds="30"
+		memoryStoreEvictionPolicy="LFU" transactionalMode="off">
+		<persistence strategy="localTempSwap" />
+	</cache>
+	
+    <!-- 12 hour -->
+	<cache name="defaultCache" maxEntriesLocalHeap="10000"
+		maxEntriesLocalDisk="1000" eternal="false" diskSpoolBufferSizeMB="20"
+		timeToIdleSeconds="2000" timeToLiveSeconds="43200"  
+		memoryStoreEvictionPolicy="LFU" transactionalMode="off">
+		<persistence strategy="localTempSwap" />
+	</cache>
+	
+	<!-- 2 min -->
+	<cache name="twoMinCache" maxEntriesLocalHeap="10000"
+		maxEntriesLocalDisk="1000" eternal="false" diskSpoolBufferSizeMB="20"
+		timeToIdleSeconds="120" timeToLiveSeconds="120"  
+		memoryStoreEvictionPolicy="LFU" transactionalMode="off">
+		<persistence strategy="localTempSwap" />
+	</cache>
+	<!-- 1 hour -->
+	<cache name="1hourCache" maxEntriesLocalHeap="10000"
+		maxEntriesLocalDisk="1000" eternal="false" diskSpoolBufferSizeMB="20"
+		timeToIdleSeconds="3600" timeToLiveSeconds="3600"  
+		memoryStoreEvictionPolicy="LFU" transactionalMode="off">
+		<persistence strategy="localTempSwap" />
+	</cache>
+	
+</ehcache>

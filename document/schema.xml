@@ -1,0 +1,221 @@
+<?xml version="1.0"?>
+<!DOCTYPE mycat:schema SYSTEM "schema.dtd">
+<mycat:schema xmlns:mycat="http://org.opencloudb/">
+    <!--配置逻辑库 -->
+ 	<schema name="base_user_schema" checkSQLschema="false" sqlMaxLimit="100"   dataNode="base_user_datanode"/>
+    <schema name="agent_schema"  checkSQLschema="false" sqlMaxLimit="100"   dataNode="agent_datanode"/>
+    <schema name="auction_schema"   checkSQLschema="false" sqlMaxLimit="100"   dataNode="auction_datanode"/>
+    <schema name="busi_plat_schema" checkSQLschema="false" sqlMaxLimit="100"   dataNode="busi_plat_datanode"/>
+    <schema name="hyip_schema"      checkSQLschema="false" sqlMaxLimit="100"   dataNode="hyip_datanode"/>
+    <schema name="hyiptask_schema"  checkSQLschema="false" sqlMaxLimit="100"   dataNode="hyiptask_datanode"/>
+    <schema name="logs_schema" 		checkSQLschema="false" sqlMaxLimit="100"   dataNode="logs_datanode"/>
+    <schema name="maxwell_schema" 	checkSQLschema="false" sqlMaxLimit="100"   dataNode="maxwell_datanode"/>
+    <schema name="merchant_schema" 	checkSQLschema="false" sqlMaxLimit="100"   dataNode="merchant_datanode"/>
+    <schema name="merchant_middle_schema" checkSQLschema="false" sqlMaxLimit="100" dataNode="merchant_middle_datanode"/>
+    <schema name="monitor_schema" 	checkSQLschema="false" sqlMaxLimit="100"   dataNode="monitor_datanode"/>
+    <schema name="oc1_schema" 		checkSQLschema="false" sqlMaxLimit="100"   dataNode="oc1_datanode"/>
+    <schema name="vc_schema" checkSQLschema="false" sqlMaxLimit="100"   dataNode="vc_datanode"/>
+    <schema name="unite_schema" 	checkSQLschema="false" sqlMaxLimit="100"   dataNode="unite_datanode"/>
+    <schema name="task1_schema" 	checkSQLschema="false" sqlMaxLimit="100"   dataNode="task1_datanode"/>
+    <schema name="search_schema" 	checkSQLschema="false" sqlMaxLimit="100"   dataNode="search_datanode"/>
+    <schema name="recommend_schema" checkSQLschema="false" sqlMaxLimit="100"   dataNode="recommend_datanode"/>
+    <schema name="qbaochou_schema" 	checkSQLschema="false" sqlMaxLimit="100"   dataNode="qbaochou_datanode"/>
+    <schema name="qianwang365_schema" checkSQLschema="false" sqlMaxLimit="100" dataNode="qianwang365_datanode"/>
+    <schema name="tweet_schema" checkSQLschema="false" sqlMaxLimit="100" dataNode="tweet_datanode"/>
+ 	
+ 	
+ 	<!-- 配置逻辑节点 -->
+ 	<dataNode name="base_user_datanode" dataHost="base_user_datahost" database="base_user" />
+ 	<dataNode name="agent_datanode" dataHost="agent_datahost" database="agent" />
+ 	<dataNode name="auction_datanode" dataHost="auction_datahost" database="auction" />
+ 	<dataNode name="busi_plat_datanode" dataHost="busi_plat_datahost" database="busi_plat" />
+ 	<dataNode name="hyip_datanode" dataHost="hyip_datahost" database="hyip" />
+    <dataNode name="hyiptask_datanode" dataHost="hyiptask_datahost" database="hyiptask" />
+	<dataNode name="logs_datanode" dataHost="logs_datahost" database="logs" />
+	<dataNode name="maxwell_datanode" dataHost="maxwell_datahost" database="maxwell" />
+	<dataNode name="merchant_datanode" dataHost="merchant_datahost" database="merchant" />
+	<dataNode name="merchant_middle_datanode" dataHost="merchant_middle_datahost" database="merchant_middle" />
+	<dataNode name="monitor_datanode" dataHost="monitor_datahost" database="monitor" />
+	<dataNode name="oc1_datanode" dataHost="oc1_datahost" database="oc1" />
+	<dataNode name="qbaochou_datanode" dataHost="qbaochou_datahost" database="qbaochou" />
+	<dataNode name="qianwang365_datanode" dataHost="qianwang365_datanhost" database="qianwang365" />
+	<dataNode name="recommend_datanode" dataHost="recommend_datahost" database="recommend" />
+	<dataNode name="search_datanode" dataHost="search_datahost" database="search" />
+	<dataNode name="task1_datanode" dataHost="task1_datahost" database="task1" />
+	<dataNode name="unite_datanode" dataHost="unite_datahost" database="unite" />
+	<dataNode name="vc_datanode" dataHost="vc_datahost" database="vc" />
+ 	<dataNode name="tweet_datanode" dataHost="tweet_datahost" database="tweet" />
+ 	
+ 	<!-- 配置逻辑节点对应的实际tables -->
+ 	
+	 <dataHost name="base_user_datahost" maxCon="500" minCon="20" balance="1"
+		writeType="0" dbType="mysql" dbDriver="native" switchType="2" slaveThreshold="100">
+	 	<heartbeat>show slave status</heartbeat>
+		<writeHost host="hostM1" url="172.16.14.111:3306" user="root" password="recsys123"/>
+		<writeHost host="hostS1" url="172.16.14.112:3306" user="root" password="recsys123"/>
+	    <writeHost host="hostS2" url="172.16.14.113:3306" user="root" password="recsys123"/>
+	</dataHost>
+	
+	 
+   
+	 <dataHost name="agent_datahost" maxCon="500" minCon="20" balance="1"
+		writeType="0" dbType="mysql" dbDriver="native" switchType="2" slaveThreshold="100">
+	 	<heartbeat>show slave status</heartbeat>
+		<writeHost host="hostM1" url="172.16.14.111:3306" user="root" password="recsys123"/>
+		<writeHost host="hostS1" url="172.16.14.112:3306" user="root" password="recsys123"/>
+	    <writeHost host="hostS2" url="172.16.14.113:3306" user="root" password="recsys123"/>
+	</dataHost>
+	
+ 	
+	 <dataHost name="auction_datahost" maxCon="500" minCon="20" balance="1"
+		writeType="0" dbType="mysql" dbDriver="native" switchType="2" slaveThreshold="100">
+	 	<heartbeat>show slave status</heartbeat>
+		<writeHost host="hostM1" url="172.16.14.111:3306" user="root" password="recsys123"/>
+		<writeHost host="hostS1" url="172.16.14.112:3306" user="root" password="recsys123"/>
+	    <writeHost host="hostS2" url="172.16.14.113:3306" user="root" password="recsys123"/>
+	</dataHost>
+ 	
+	 <dataHost name="busi_plat_datahost" maxCon="500" minCon="20" balance="1"
+		writeType="0" dbType="mysql" dbDriver="native" switchType="2" slaveThreshold="100">
+	 	<heartbeat>show slave status</heartbeat>
+		<writeHost host="hostM1" url="172.16.14.111:3306" user="root" password="recsys123"/>
+		<writeHost host="hostS1" url="172.16.14.112:3306" user="root" password="recsys123"/>
+	    <writeHost host="hostS2" url="172.16.14.113:3306" user="root" password="recsys123"/>
+	</dataHost>
+	
+	 <dataHost name="hyip_datahost" maxCon="500" minCon="20" balance="1"
+		writeType="0" dbType="mysql" dbDriver="native" switchType="2" slaveThreshold="100">
+	 	<heartbeat>show slave status</heartbeat>
+		<writeHost host="hostM1" url="172.16.14.111:3306" user="root" password="recsys123"/>
+		<writeHost host="hostS1" url="172.16.14.112:3306" user="root" password="recsys123"/>
+	    <writeHost host="hostS2" url="172.16.14.113:3306" user="root" password="recsys123"/>
+	</dataHost>
+	
+	 <dataHost name="hyiptask_datahost" maxCon="500" minCon="20" balance="1"
+		writeType="0" dbType="mysql" dbDriver="native" switchType="2" slaveThreshold="100">
+	 	<heartbeat>show slave status</heartbeat>
+		<writeHost host="hostM1" url="172.16.14.111:3306" user="root" password="recsys123"/>
+		<writeHost host="hostS1" url="172.16.14.112:3306" user="root" password="recsys123"/>
+	    <writeHost host="hostS2" url="172.16.14.113:3306" user="root" password="recsys123"/>
+	</dataHost>
+
+ 
+	 <dataHost name="logs_datahost" maxCon="500" minCon="20" balance="1"
+		writeType="0" dbType="mysql" dbDriver="native" switchType="2" slaveThreshold="100">
+	 	<heartbeat>show slave status</heartbeat>
+		<writeHost host="hostM1" url="172.16.14.111:3306" user="root" password="recsys123"/>
+		<writeHost host="hostS1" url="172.16.14.112:3306" user="root" password="recsys123"/>
+	    <writeHost host="hostS2" url="172.16.14.113:3306" user="root" password="recsys123"/>
+	</dataHost>
+ 	
+	 <dataHost name="maxwell_datahost" maxCon="500" minCon="20" balance="1"
+		writeType="0" dbType="mysql" dbDriver="native" switchType="2" slaveThreshold="100">
+	 	<heartbeat>show slave status</heartbeat>
+		<writeHost host="hostM1" url="172.16.14.111:3306" user="root" password="recsys123"/>
+		<writeHost host="hostS1" url="172.16.14.112:3306" user="root" password="recsys123"/>
+	    <writeHost host="hostS2" url="172.16.14.113:3306" user="root" password="recsys123"/>
+	</dataHost>
+
+ 	
+	 <dataHost name="merchant_datahost" maxCon="500" minCon="20" balance="1"
+		writeType="0" dbType="mysql" dbDriver="native" switchType="2" slaveThreshold="100">
+	 	<heartbeat>show slave status</heartbeat>
+		<writeHost host="hostM1" url="172.16.14.111:3306" user="root" password="recsys123"/>
+		<writeHost host="hostS1" url="172.16.14.112:3306" user="root" password="recsys123"/>
+	    <writeHost host="hostS2" url="172.16.14.113:3306" user="root" password="recsys123"/>
+	</dataHost>
+	
+
+ 	
+	 <dataHost name="merchant_middle_datahost" maxCon="500" minCon="20" balance="1"
+		writeType="0" dbType="mysql" dbDriver="native" switchType="2" slaveThreshold="100">
+	 	<heartbeat>show slave status</heartbeat>
+		<writeHost host="hostM1" url="172.16.14.111:3306" user="root" password="recsys123"/>
+		<writeHost host="hostS1" url="172.16.14.112:3306" user="root" password="recsys123"/>
+	    <writeHost host="hostS2" url="172.16.14.113:3306" user="root" password="recsys123"/>
+	</dataHost>
+ 	
+	 <dataHost name="monitor_datahost" maxCon="500" minCon="20" balance="1"
+		writeType="0" dbType="mysql" dbDriver="native" switchType="2" slaveThreshold="100">
+	 	<heartbeat>show slave status</heartbeat>
+		<writeHost host="hostM1" url="172.16.14.111:3306" user="root" password="recsys123"/>
+		<writeHost host="hostS1" url="172.16.14.112:3306" user="root" password="recsys123"/>
+	    <writeHost host="hostS2" url="172.16.14.113:3306" user="root" password="recsys123"/>
+	</dataHost>
+	
+	 <dataHost name="oc1_datahost" maxCon="500" minCon="20" balance="1"
+		writeType="0" dbType="mysql" dbDriver="native" switchType="2" slaveThreshold="100">
+	 	<heartbeat>show slave status</heartbeat>
+		<writeHost host="hostM1" url="172.16.14.111:3306" user="root" password="recsys123"/>
+		<writeHost host="hostS1" url="172.16.14.112:3306" user="root" password="recsys123"/>
+	    <writeHost host="hostS2" url="172.16.14.113:3306" user="root" password="recsys123"/>
+	</dataHost>
+	
+	 <dataHost name="qbaochou_datahost" maxCon="500" minCon="20" balance="1"
+		writeType="0" dbType="mysql" dbDriver="native" switchType="2" slaveThreshold="100">
+	 	<heartbeat>show slave status</heartbeat>
+		<writeHost host="hostM1" url="172.16.14.111:3306" user="root" password="resys123"/>
+		<writeHost host="hostS1" url="172.16.14.112:3306" user="root" password="recsys123"/>
+	    <writeHost host="hostS2" url="172.16.14.113:3306" user="root" password="recsys123"/>
+	</dataHost>
+	
+	
+	 <dataHost name="qianwang365_datanhost" maxCon="500" minCon="20" balance="1"
+		writeType="0" dbType="mysql" dbDriver="native" switchType="2" slaveThreshold="100">
+	 	<heartbeat>show slave status</heartbeat>
+		<writeHost host="hostM1" url="172.16.14.111:3306" user="root" password="recsys123"/>
+		<writeHost host="hostS1" url="172.16.14.112:3306" user="root" password="recsys123"/>
+	    <writeHost host="hostS2" url="172.16.14.113:3306" user="root" password="recsys123"/>
+	</dataHost>
+	
+	 
+	 <dataHost name="recommend_datahost" maxCon="500" minCon="20" balance="1"
+		writeType="0" dbType="mysql" dbDriver="native" switchType="2" slaveThreshold="100">
+	 	<heartbeat>show slave status</heartbeat>
+		<writeHost host="hostM1" url="172.16.14.111:3306" user="root" password="recsys123"/>
+		<writeHost host="hostS1" url="172.16.14.112:3306" user="root" password="recsys123"/>
+	    <writeHost host="hostS2" url="172.16.14.113:3306" user="root" password="recsys123"/>
+	</dataHost>
+	
+	 
+	 <dataHost name="search_datahost" maxCon="500" minCon="20" balance="1"
+		writeType="0" dbType="mysql" dbDriver="native" switchType="2" slaveThreshold="100">
+	 	<heartbeat>show slave status</heartbeat>
+		<writeHost host="hostM1" url="172.16.14.111:3306" user="root" password="recsys123"/>
+		<writeHost host="hostS1" url="172.16.14.112:3306" user="root" password="recsys123"/>
+	    <writeHost host="hostS2" url="172.16.14.113:3306" user="root" password="recsys123"/>
+	</dataHost>
+	
+	 <dataHost name="task1_datahost" maxCon="500" minCon="20" balance="1"
+		writeType="0" dbType="mysql" dbDriver="native" switchType="2" slaveThreshold="100">
+	 	<heartbeat>show slave status</heartbeat>
+		<writeHost host="hostM1" url="172.16.14.111:3306" user="root" password="recsys123"/>
+		<writeHost host="hostS1" url="172.16.14.112:3306" user="root" password="recsys123"/>
+	    <writeHost host="hostS2" url="172.16.14.113:3306" user="root" password="recsys123"/>
+	</dataHost>
+	
+	 <dataHost name="unite_datahost" maxCon="500" minCon="20" balance="1"
+		writeType="0" dbType="mysql" dbDriver="native" switchType="2" slaveThreshold="100">
+	 	<heartbeat>show slave status</heartbeat>
+		<writeHost host="hostM1" url="172.16.14.111:3306" user="root" password="recsys123"/>
+		<writeHost host="hostS1" url="172.16.14.112:3306" user="root" password="recsys123"/>
+	    <writeHost host="hostS2" url="172.16.14.113:3306" user="root" password="recsys123"/>
+	</dataHost>
+
+	 <dataHost name="vc_datahost" maxCon="500" minCon="20" balance="1"
+		writeType="0" dbType="mysql" dbDriver="native" switchType="2" slaveThreshold="100">
+	 	<heartbeat>show slave status</heartbeat>
+		<writeHost host="hostM1" url="172.16.14.111:3306" user="root" password="recsys123"/>
+		<writeHost host="hostS1" url="172.16.14.112:3306" user="root" password="recsys123"/>
+	    <writeHost host="hostS2" url="172.16.14.113:3306" user="root" password="recsys123"/>
+	</dataHost>
+	
+	<dataHost name="tweet_datahost" maxCon="500" minCon="20" balance="1"
+		writeType="0" dbType="mysql" dbDriver="native" switchType="2" slaveThreshold="100">
+	 	<heartbeat>show slave status</heartbeat>
+		<writeHost host="hostM1" url="172.16.14.111:3306" user="root" password="recsys123"/>
+		<writeHost host="hostS1" url="172.16.14.112:3306" user="root" password="recsys123"/>
+	    <writeHost host="hostS2" url="172.16.14.113:3306" user="root" password="recsys123"/>
+	</dataHost>
+</mycat:schema>
+

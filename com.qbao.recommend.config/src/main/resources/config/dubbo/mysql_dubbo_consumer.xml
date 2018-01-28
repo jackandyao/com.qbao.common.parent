@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>  
+<beans xmlns="http://www.springframework.org/schema/beans"
+	 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:dubbo="http://code.alibabatech.com/schema/dubbo"
+	xsi:schemaLocation="
+	http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.1.xsd
+	http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.1.xsd
+	http://code.alibabatech.com/schema/dubbo http://code.alibabatech.com/schema/dubbo/dubbo.xsd
+	"> 
+	<import resource="classpath*:/dubbo-zookeeper.xml" /> 
+    <!-- 生成远程服务代理-->  
+    <dubbo:reference interface="com.qbao.recommend.respositoy.mysql.service.IAgentTaskService" id="agentTaskServiceImpl"/>
+    <dubbo:reference interface="com.qbao.recommend.respositoy.mysql.service.IAgentTaskPushService" id="agentTaskPushServiceImpl"/>
+    <dubbo:reference interface="com.qbao.recommend.respositoy.mysql.service.IAgentViewService" id="agentViewServiceImpl"/> 
+    <dubbo:reference interface="com.qbao.recommend.respositoy.mysql.service.IBcProductService" id="bcProductServiceImpl"/> 
+    <dubbo:reference interface="com.qbao.recommend.respositoy.mysql.service.IDoctorDataService" id="doctorDataServiceImpl"/> 
+    <dubbo:reference interface="com.qbao.recommend.respositoy.mysql.service.IHotSpuService" id="hotSpuServiceImpl"/> 
+    <dubbo:reference interface="com.qbao.recommend.respositoy.mysql.service.IHyipTransferHandService" id="hyipTransferHandServiceImpl"/> 
+    <dubbo:reference interface="com.qbao.recommend.respositoy.mysql.service.ILoginBlacklistService" id="loginBlacklistServiceImpl"/> 
+    <dubbo:reference interface="com.qbao.recommend.respositoy.mysql.service.IMerMiddleDataService" id="merMiddleDataServiceImpl"/> 
+    <dubbo:reference interface="com.qbao.recommend.respositoy.mysql.service.IMerSpuService" id="merSpuServiceImpl"/> 
+    <dubbo:reference interface="com.qbao.recommend.respositoy.mysql.service.IProductProfileService" id="bcProductProfileServiceImpl"/> 
+    <dubbo:reference interface="com.qbao.recommend.respositoy.mysql.service.IProductProfileService" id="merProductProfileServiceImpl"/> 
+    <dubbo:reference interface="com.qbao.recommend.respositoy.mysql.service.IRecAgentGuessService" id="recAgentGuessServiceImpl"/> 
+    <dubbo:reference interface="com.qbao.recommend.respositoy.mysql.service.IRecAgentLookService" id="recAgentLookServiceImpl"/> 
+    <dubbo:reference interface="com.qbao.recommend.respositoy.mysql.service.IRecBGService" id="recBGServiceImpl"/> 
+    <dubbo:reference interface="com.qbao.recommend.respositoy.mysql.service.IRecGWJSService" id="recGWJSServiceImpl"/> 
+    <dubbo:reference interface="com.qbao.recommend.respositoy.mysql.service.IRecommendShopService" id="recommendShopServiceImpl"/> 
+    <dubbo:reference interface="com.qbao.recommend.respositoy.mysql.service.IRecRuleService" id="recRuleServiceImpl"/> 
+    <dubbo:reference interface="com.qbao.recommend.respositoy.mysql.service.IShopProfileService" id="shopProfileServiceImpl"/> 
+    <dubbo:reference interface="com.qbao.recommend.respositoy.mysql.service.IShopSearchService" id="shopSearchServiceImpl"/> 
+    <dubbo:reference interface="com.qbao.recommend.respositoy.mysql.service.IUserProfileService" id="userProfileServiceImpl"/> 
+    <dubbo:reference interface="com.qbao.recommend.respositoy.mysql.service.IUserViewBuyService" id="userViewBuyServiceImpl"/> 
+    <dubbo:reference interface="com.qbao.recommend.respositoy.mysql.service.IYouHaoHuoService" id="youHaoHuoServiceImpl"/>    
+    <dubbo:reference interface="com.qbao.recommend.respositoy.mysql.service.ILookAgainAndBuyService" id="lookAgainAndBuyServiceImpl"/>    
+    <dubbo:reference interface="com.qbao.recommend.respositoy.mysql.service.IRecommendMetadataService" id="recommendMetadataServiceImpl"/> 
+    <dubbo:reference interface="com.qbao.recommend.respositoy.mysql.service.IHyipTaskService" id="hyipTaskServiceImpl"/>    
+    <dubbo:reference interface="com.qbao.recommend.respositoy.mysql.service.ITaskActivityService" id="taskActivityServiceImpl"/>   
+    <dubbo:reference interface="com.qbao.recommend.respositoy.mysql.service.IUserScoreLevelService " id="userScoreLevelServiceImpl"/> 
+    <dubbo:reference interface="com.qbao.recommend.respositoy.mysql.service.IRecDirectoryService" id="recDirectoryServiceImpl"/> 
+    <dubbo:reference interface="com.qbao.recommend.respositoy.mysql.service.IRecUserDisService" id="recUserDisServiceImpl"/> 
+    <dubbo:reference interface="com.qbao.recommend.respositoy.mysql.service.IRecSimilaryService" id="recSimilaryServiceImpl"/> 
+    <dubbo:reference interface="com.qbao.recommend.respositoy.mysql.service.IRecLookBuyService" id="recLookBuyServiceImpl"/> 
+    <dubbo:reference interface="com.qbao.recommend.respositoy.mysql.service.IRecLookAgainService" id="recLookAgainServiceImpl"/> 
+    <dubbo:reference interface="com.qbao.recommend.respositoy.mysql.service.IRecICFService" id="recICFServiceImpl"/> 
+    <dubbo:reference interface="com.qbao.recommend.respositoy.mysql.service.IRecAgenspuService" id="recAgentspuServiceImpl"/> 
+    <dubbo:reference interface="com.qbao.recommend.respositoy.mysql.service.ITweetInfoService" id="tweetInfoServiceImpl"/> 
+    <dubbo:reference interface="com.qbao.recommend.respositoy.mysql.service.ITweetPoolServcie" id="tweetPoolServcieImpl"/> 
+    <dubbo:reference interface="com.qbao.recommend.respositoy.mysql.service.IRecTweetTRService" id="recTweetTRServiceImpl"/> 
+    <dubbo:reference interface="com.qbao.recommend.respositoy.mysql.service.IRecTweetDLService" id="recTweetDLServiceImpl"/> 
+    <dubbo:reference interface="com.qbao.recommend.respositoy.mysql.service.IRecShopViewService" id="recShopViewServiceImpl"/> 
+    <dubbo:reference interface="com.qbao.recommend.respositoy.mysql.service.IRecShopBuyService" id="recShopBuyServiceImpl"/> 
+    <dubbo:reference interface="com.qbao.recommend.respositoy.mysql.service.IRecShopICFService" id="recShopICFServiceImpl"/> 
+    <dubbo:reference interface="com.qbao.recommend.respositoy.mysql.service.IRecShopPrdService" id="recShopPrdServiceImpl"/> 
+    <dubbo:reference interface="com.qbao.recommend.respositoy.mysql.service.IRecGoodProductService" id="recGoodProductServiceImpl"/>
+    <dubbo:reference interface="com.qbao.recommend.respositoy.mysql.service.IGRankService" id="gRankServiceImpl"/>
+    <dubbo:reference interface="com.qbao.recommend.respositoy.mysql.service.IGRankSearchService" id="gRankSearchServiceImpl"/>
+    <dubbo:reference interface="com.qbao.recommend.respositoy.mysql.service.IGRankFavoriteService" id="gRankFavoriteServiceImpl"/>
+    <dubbo:reference interface="com.qbao.recommend.respositoy.mysql.service.IGRankReturnService" id="gRankReturnServiceImpl"/>
+    <dubbo:reference interface="com.qbao.recommend.respositoy.mysql.service.IGRankThumbService" id="gRankThumbServiceImpl"/>
+    <dubbo:reference interface="com.qbao.recommend.respositoy.mysql.service.IGRankViewService" id="gRankViewServiceImpl"/>
+    <dubbo:reference interface="com.qbao.recommend.respositoy.mysql.service.IGRankBuyService" id="gRankBuyServiceImpl"/>
+    <dubbo:reference interface="com.qbao.recommend.respositoy.mysql.service.IMerDirectoryService" id="merDirectoryServiceImpl"/>
+    <dubbo:reference interface="com.qbao.recommend.respositoy.mysql.service.IHyipTaskProfitService" id="hyipTaskProfitServiceImpl"/>
+    <dubbo:reference interface="com.qbao.recommend.respositoy.mysql.service.IUserExcludeProductJsonService" id="userExcludeProductJsonServiceImpl"/>
+
+    <dubbo:reference interface="com.qbao.recommend.respositoy.restful.service.ILBSService" id="lBSServiceImpl"/>
+    <dubbo:reference interface="com.qbao.recommend.respositoy.mysql.service.ICategoryService" id="categoryServiceImpl"/>
+    <dubbo:reference interface="com.qbao.recommend.respositoy.mysql.service.IBYKeywordService" id="bYKeywordServiceImpl"/>
+    <dubbo:reference interface="com.qbao.recommend.respositoy.mysql.service.IYouPiaoService" id="youPiaoServiceImpl"/>
+    <dubbo:reference interface="com.qbao.recommend.respositoy.mysql.service.IMerchantGoodStatDayService"  id="merchantGoodsStatDayServiceImpl"  />
+    <dubbo:reference interface="com.qbao.recommend.respositoy.mysql.service.IGoodProductDirService" id="goodProductDirServiceImpl"  />
+    <dubbo:reference interface="com.qbao.recommend.respositoy.restful.service.IHaohuoSearchService" id="haohuoSearchServiceImpl" />
+
+    <dubbo:reference interface="com.qbao.recommend.respositoy.mysql.service.IQbikeService" id="qbikeServiceImpl" />
+</beans>

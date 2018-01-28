@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.qbao.recommend.respositoy.mysql.dao.HyipTaskDao">
+	<resultMap id="HyipTaskMap" type="HyipTask">
+		<result column="id" property="id" />
+		<result column="task_name" property="task_name" />
+		<result column="margins" property="margins" />
+		<result column="total_reward" property="total_reward" />
+		<result column="penalty" property="penalty" />
+		<result column="total_num" property="total_num" />
+		<result column="one_day_num" property="one_day_num" />
+		<result column="days" property="days" />
+		<result column="show_time" property="show_time" />
+		<result column="mobile_description" property="mobile_description" />
+		<result column="star_num" property="star_num" />
+		<result column="task_type" property="task_type" />
+		<result column="task_count" property="task_count" />
+		<result column="task_seq" property="task_seq" />
+		<result column="active_flag" property="active_flag" />
+		<result column="coupon_id" property="coupon_id" />
+		<result column="is_new" property="is_new" />
+		<result column="ads_type" property="ads_type" />
+		<result column="video_url" property="video_url" />
+		<result column="business_circles_id" property="business_circles_id" />
+		<result column="is_abnormal" property="is_abnormal" />
+		<result column="cpa_url" property="cpa_url" />
+		<result column="cpa_img_url" property="cpa_img_url" />
+		<result column="partner_id" property="partner_id" />
+		<result column="publish_channel" property="publish_channel" />
+		<result column="stock" property="stock" />
+		<result column="auditer" property="auditer" />
+		<result column="y_reject" property="y_reject" />
+		<result column="partner_user_id" property="partner_user_id" />
+		<result column="is_recommend_task" property="is_recommend_task" />
+	</resultMap>
+
+
+</mapper>

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/com.qbao.common.parent.iml" filepath="$PROJECT_DIR$/com.qbao.common.parent.iml" />
+      <module fileurl="file://$PROJECT_DIR$/com.qbao.recommend.alarm/com.qbao.recommend.alarm.iml" filepath="$PROJECT_DIR$/com.qbao.recommend.alarm/com.qbao.recommend.alarm.iml" />
+      <module fileurl="file://$PROJECT_DIR$/com.qbao.recommend.algorithm/com.qbao.recommend.algorithm.iml" filepath="$PROJECT_DIR$/com.qbao.recommend.algorithm/com.qbao.recommend.algorithm.iml" />
+      <module fileurl="file://$PROJECT_DIR$/com.qbao.recommend.batch/com.qbao.recommend.batch.iml" filepath="$PROJECT_DIR$/com.qbao.recommend.batch/com.qbao.recommend.batch.iml" />
+      <module fileurl="file://$PROJECT_DIR$/com.qbao.recommend.business/com.qbao.recommend.business.iml" filepath="$PROJECT_DIR$/com.qbao.recommend.business/com.qbao.recommend.business.iml" />
+      <module fileurl="file://$PROJECT_DIR$/com.qbao.recommend.config/com.qbao.recommend.config.iml" filepath="$PROJECT_DIR$/com.qbao.recommend.config/com.qbao.recommend.config.iml" />
+      <module fileurl="file://$PROJECT_DIR$/com.qbao.recommend.respositoy/com.qbao.recommend.respositoy.iml" filepath="$PROJECT_DIR$/com.qbao.recommend.respositoy/com.qbao.recommend.respositoy.iml" />
+      <module fileurl="file://$PROJECT_DIR$/com.qbao.recommend.stream/com.qbao.recommend.stream.iml" filepath="$PROJECT_DIR$/com.qbao.recommend.stream/com.qbao.recommend.stream.iml" />
+      <module fileurl="file://$PROJECT_DIR$/com.qbao.recommend.util/com.qbao.recommend.util.iml" filepath="$PROJECT_DIR$/com.qbao.recommend.util/com.qbao.recommend.util.iml" />
+    </modules>
+  </component>
+</project>

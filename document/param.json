@@ -1,0 +1,89 @@
+[
+	{
+		"spu_buy_facade": 
+		[
+			{
+				"hot_buy_simil_spu": 
+				{
+					"num": 3,
+					"is_similar": true,
+					"is_directory": false
+				},
+
+				"hot_buy_spu": 
+				{
+					"num": 5,
+					"is_similar": true,
+					"is_directory": false
+				}
+			}
+		]
+	},
+
+	{
+		"spu_view_facade": 
+		[
+			{
+				"click_spu": 
+				{
+					"num": 4,
+					"is_similar": true,
+					"is_directory": false
+				}
+			}
+		]
+	},
+
+	{
+		"spu_personlaized_facade": 
+		[
+			{
+				"als_spu": 
+				{
+					"num": 7,
+					"is_similar": true,
+					"is_directory": false
+				}
+			}
+		]
+	},
+
+	{
+		"spu_realtime_facade": 
+		[
+			{
+				"spu_realtime_dir": 
+				{
+					"num": 4,
+					"is_similar": true,
+					"is_directory": false
+				},
+
+				"spu_realtime_sim": 
+				{
+					"num": 5,
+					"is_similar": true,
+					"is_directory": false
+				}
+			}
+		]
+	},
+
+	{
+		"spu_knowledge_facade": 
+		[
+			{
+				"user_dis_spu": 
+				{
+					"num": 3,
+					"is_similar": true,
+					"is_directory": false
+				}
+			}
+		]
+	},
+	{
+		"IGuessLikeService":"AAA"
+	}
+	
+]

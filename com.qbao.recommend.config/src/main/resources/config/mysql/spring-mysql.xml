@@ -1,0 +1,453 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context" 
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xsi:schemaLocation="
+	http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.1.xsd
+	http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.1.xsd
+	http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.1.xsd
+	http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-3.1.xsd"
+	 default-lazy-init="true">
+
+   <context:component-scan base-package="com.qbao.recommend.respositoy" />
+	<bean id="dataSourcePropertyConfigurer"
+		class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+		<property name="ignoreUnresolvablePlaceholders" value="true"></property>
+		<property name="locations">
+			<list>
+				<value>classpath:mysql/datatable.properties</value>
+				<value>classpath*:*.properties</value>
+			</list>
+		</property>
+	</bean>
+<!--      <import resource="classpath:/spring-props.xml"/>
+ -->	
+	<!-- 配置merchant数据源 只读 -->
+	<bean id="merchantDataSource" class="com.zaxxer.hikari.HikariDataSource"
+		destroy-method="close">
+		<constructor-arg ref="merchantHikariConfig" />
+	</bean>
+	<bean id="merchantHikariConfig" class="com.zaxxer.hikari.HikariConfig">
+		<property name="poolName" value="springHikariCP" />
+		<property name="driverClassName" value="${datasource.driverClassName}" />
+		<property name="jdbcUrl" value="${merchant.datasource.url}" />
+		<property name="username" value="${merchant.datasource.username}" />
+		<property name="password" value="${merchant.datasource.password}" />
+		<property name="minimumIdle" value="${datasource.min-idle}" />
+		<property name="maximumPoolSize" value="${datasource.max-active}" />
+		<property name="connectionInitSql" value="set names utf8" />
+		<property name="dataSourceProperties">
+			<props>
+				<prop key="cachePrepStmts">true</prop>
+				<prop key="prepStmtCacheSize">250</prop>
+				<prop key="prepStmtCacheSqlLimit">2048</prop>
+				<prop key="useServerPrepStmts">true</prop>
+				<prop key="characterEncoding">utf8</prop>
+				<prop key="useUnicode">true</prop>
+			</props>
+		</property>
+	</bean>
+
+	
+
+	<!-- 配置qbaochou数据源 只读 -->
+	<bean id="qbaochouDataSource" class="com.zaxxer.hikari.HikariDataSource"
+		destroy-method="close">
+		<constructor-arg ref="qbaochouHikariConfig" />
+	</bean>
+	<bean id="qbaochouHikariConfig" class="com.zaxxer.hikari.HikariConfig">
+		<property name="poolName" value="springHikariCP" />
+		<property name="driverClassName" value="${datasource.driverClassName}" />
+		<property name="jdbcUrl" value="${qbaochou.datasource.url}" />
+		<property name="username" value="${qbaochou.datasource.username}" />
+		<property name="password" value="${qbaochou.datasource.password}" />
+		<property name="minimumIdle" value="${datasource.min-idle}" />
+		<property name="maximumPoolSize" value="${datasource.max-active}" />
+		<property name="connectionInitSql" value="set names utf8" />
+		<property name="dataSourceProperties">
+			<props>
+				<prop key="cachePrepStmts">true</prop>
+				<prop key="prepStmtCacheSize">250</prop>
+				<prop key="prepStmtCacheSqlLimit">2048</prop>
+				<prop key="useServerPrepStmts">true</prop>
+				<prop key="characterEncoding">utf8</prop>
+				<prop key="useUnicode">true</prop>
+			</props>
+		</property>
+	</bean>
+	
+	<!-- 配置merchant_middle数据源 只读 -->
+	<bean id="merchantMiddleDataSource" class="com.zaxxer.hikari.HikariDataSource"
+		destroy-method="close">
+		<constructor-arg ref="merchantMiddleHikariConfig" />
+	</bean>
+	<bean id="merchantMiddleHikariConfig" class="com.zaxxer.hikari.HikariConfig">
+		<property name="poolName" value="springHikariCP" />
+		<property name="driverClassName" value="${datasource.driverClassName}" />
+		<property name="jdbcUrl" value="${merchant_middle.datasource.url}" />
+		<property name="username" value="${merchant_middle.datasource.username}" />
+		<property name="password" value="${merchant_middle.datasource.password}" />
+		<property name="minimumIdle" value="${datasource.min-idle}" />
+		<property name="maximumPoolSize" value="${datasource.max-active}" />
+		<property name="connectionInitSql" value="set names utf8" />
+		<property name="dataSourceProperties">
+			<props>
+				<prop key="cachePrepStmts">true</prop>
+				<prop key="prepStmtCacheSize">250</prop>
+				<prop key="prepStmtCacheSqlLimit">2048</prop>
+				<prop key="useServerPrepStmts">true</prop>
+				<prop key="characterEncoding">utf8</prop>
+				<prop key="useUnicode">true</prop>
+			</props>
+		</property>
+	</bean>
+	
+	<!-- 配置recommendDataSource数据源 只读 -->
+	<bean id="recommendDataSource" class="com.zaxxer.hikari.HikariDataSource"
+		destroy-method="close">
+		<constructor-arg ref="recommendHikariConfig" />
+	</bean>
+	<bean id="recommendHikariConfig" class="com.zaxxer.hikari.HikariConfig">
+		<property name="poolName" value="springHikariCP" />
+		<property name="driverClassName" value="${datasource.driverClassName}" />
+		<property name="jdbcUrl" value="${recommend.datasource.url}" />
+		<property name="username" value="${recommend.datasource.username}" />
+		<property name="password" value="${recommend.datasource.password}" />
+		<property name="minimumIdle" value="${datasource.min-idle}" />
+		<property name="maximumPoolSize" value="${datasource.max-active}" />
+		<property name="connectionInitSql" value="set names utf8" />
+		<property name="dataSourceProperties">
+			<props>
+				<prop key="cachePrepStmts">true</prop>
+				<prop key="prepStmtCacheSize">250</prop>
+				<prop key="prepStmtCacheSqlLimit">2048</prop>
+				<prop key="useServerPrepStmts">true</prop>
+				<prop key="characterEncoding">utf8</prop>
+				<prop key="useUnicode">true</prop>
+			</props>
+		</property>
+	</bean>
+	
+	<!-- 配置agentDataSource数据源 只读 -->
+	<bean id="agentDataSource" class="com.zaxxer.hikari.HikariDataSource"
+		destroy-method="close">
+		<constructor-arg ref="agentHikariConfig" />
+	</bean>
+	<bean id="agentHikariConfig" class="com.zaxxer.hikari.HikariConfig">
+		<property name="poolName" value="springHikariCP" />
+		<property name="driverClassName" value="${datasource.driverClassName}" />
+		<property name="jdbcUrl" value="${agent.datasource.url}" />
+		<property name="username" value="${agent.datasource.username}" />
+		<property name="password" value="${agent.datasource.password}" />
+		<property name="minimumIdle" value="${datasource.min-idle}" />
+		<property name="maximumPoolSize" value="${datasource.max-active}" />
+		<property name="connectionInitSql" value="set names utf8" />
+		<property name="dataSourceProperties">
+			<props>
+				<prop key="cachePrepStmts">true</prop>
+				<prop key="prepStmtCacheSize">250</prop>
+				<prop key="prepStmtCacheSqlLimit">2048</prop>
+				<prop key="useServerPrepStmts">true</prop>
+				<prop key="characterEncoding">utf8</prop>
+				<prop key="useUnicode">true</prop>
+			</props>
+		</property>
+	</bean>
+	
+	<!-- 配置doctor数据源 只读 -->
+	<bean id="doctorDataSource" class="com.zaxxer.hikari.HikariDataSource"
+		destroy-method="close">
+		<constructor-arg ref="doctorHikariConfig" />
+	</bean>
+	<bean id="doctorHikariConfig" class="com.zaxxer.hikari.HikariConfig">
+		<property name="poolName" value="springHikariCP" />
+		<property name="driverClassName" value="${datasource.driverClassName}" />
+		<property name="jdbcUrl" value="${doctor.datasource.url}" />
+		<property name="username" value="${doctor.datasource.username}" />
+		<property name="password" value="${doctor.datasource.password}" />
+		<property name="minimumIdle" value="${datasource.min-idle}" />
+		<property name="maximumPoolSize" value="${datasource.max-active}" />
+		<property name="connectionInitSql" value="set names utf8" />
+		<property name="dataSourceProperties">
+			<props>
+				<prop key="cachePrepStmts">true</prop>
+				<prop key="prepStmtCacheSize">250</prop>
+				<prop key="prepStmtCacheSqlLimit">2048</prop>
+				<prop key="useServerPrepStmts">true</prop>
+				<prop key="characterEncoding">utf8</prop>
+				<prop key="useUnicode">true</prop>
+			</props>
+		</property>
+	</bean>
+
+
+   <!-- 配置用户黑名单数据源 只读 -->
+	<bean id="userBlacklistDataSource" class="com.zaxxer.hikari.HikariDataSource"
+		destroy-method="close">
+		<constructor-arg ref="userBlacklistHikariConfig" />
+	</bean>
+	<bean id="userBlacklistHikariConfig" class="com.zaxxer.hikari.HikariConfig">
+		<property name="poolName" value="springHikariCP" />
+		<property name="driverClassName" value="${datasource.driverClassName}" />
+		<property name="jdbcUrl" value="${user.blacklist.datasource.url}" />
+		<property name="username" value="${user.blacklist.datasource.username}" />
+		<property name="password" value="${user.blacklist.datasource.password}" />
+		<property name="minimumIdle" value="${datasource.min-idle}" />
+		<property name="maximumPoolSize" value="${datasource.max-active}" />
+		<property name="connectionInitSql" value="set names utf8" />
+		<property name="dataSourceProperties">
+			<props>
+				<prop key="cachePrepStmts">true</prop>
+				<prop key="prepStmtCacheSize">250</prop>
+				<prop key="prepStmtCacheSqlLimit">2048</prop>
+				<prop key="useServerPrepStmts">true</prop>
+				<prop key="characterEncoding">utf8</prop>
+				<prop key="useUnicode">true</prop>
+			</props>
+		</property>
+	</bean>
+	
+	<!-- 配置店铺黑名单数据源 只读 -->
+	<bean id="shopBlacklistDataSource" class="com.zaxxer.hikari.HikariDataSource"
+		destroy-method="close">
+		<constructor-arg ref="shopBlacklistHikariConfig" />
+	</bean>
+	<bean id="shopBlacklistHikariConfig" class="com.zaxxer.hikari.HikariConfig">
+		<property name="poolName" value="springHikariCP" />
+		<property name="driverClassName" value="${datasource.driverClassName}" />
+		<property name="jdbcUrl" value="${shop.blacklist.datasource.url}" />
+		<property name="username" value="${shop.blacklist.datasource.username}" />
+		<property name="password" value="${shop.blacklist.datasource.password}" />
+		<property name="minimumIdle" value="${datasource.min-idle}" />
+		<property name="maximumPoolSize" value="${datasource.max-active}" />
+		<property name="connectionInitSql" value="set names utf8" />
+		<property name="dataSourceProperties">
+			<props>
+				<prop key="cachePrepStmts">true</prop>
+				<prop key="prepStmtCacheSize">250</prop>
+				<prop key="prepStmtCacheSqlLimit">2048</prop>
+				<prop key="useServerPrepStmts">true</prop>
+				<prop key="characterEncoding">utf8</prop>
+				<prop key="useUnicode">true</prop>
+			</props>
+		</property>
+	</bean>
+	
+<bean id="hyipTaskDataSource" class="com.zaxxer.hikari.HikariDataSource"
+		destroy-method="close">
+		<constructor-arg ref="hyipTaskHikariConfig" />
+	</bean>
+	<bean id="hyipTaskHikariConfig" class="com.zaxxer.hikari.HikariConfig">
+		<property name="poolName" value="springHikariCP" />
+		<property name="driverClassName" value="${datasource.driverClassName}" />
+		<property name="jdbcUrl" value="${hyip.task.datasource.url}" />
+		<property name="username" value="${hyip.task.datasource.username}" />
+		<property name="password" value="${hyip.task.datasource.password}" />
+		<property name="minimumIdle" value="${datasource.min-idle}" />
+		<property name="maximumPoolSize" value="${datasource.max-active}" />
+		<property name="connectionInitSql" value="set names utf8" />
+		<property name="dataSourceProperties">
+			<props>
+				<prop key="cachePrepStmts">true</prop>
+				<prop key="prepStmtCacheSize">250</prop>
+				<prop key="prepStmtCacheSqlLimit">2048</prop>
+				<prop key="useServerPrepStmts">true</prop>
+				<prop key="characterEncoding">utf8</prop>
+				<prop key="useUnicode">true</prop>
+			</props>
+		</property>
+	</bean>
+	
+	<bean id="taskActivityDataSource" class="com.zaxxer.hikari.HikariDataSource"
+		destroy-method="close">
+		<constructor-arg ref="taskActivityHikariConfig" />
+	</bean>
+	<bean id="taskActivityHikariConfig" class="com.zaxxer.hikari.HikariConfig">
+		<property name="poolName" value="springHikariCP" />
+		<property name="driverClassName" value="${datasource.driverClassName}" />
+		<property name="jdbcUrl" value="${task.activity.datasource.url}" />
+		<property name="username" value="${task.activity.datasource.username}" />
+		<property name="password" value="${task.activity.datasource.password}" />
+		<property name="minimumIdle" value="${datasource.min-idle}" />
+		<property name="maximumPoolSize" value="${datasource.max-active}" />
+		<property name="connectionInitSql" value="set names utf8" />
+		<property name="dataSourceProperties">
+			<props>
+				<prop key="cachePrepStmts">true</prop>
+				<prop key="prepStmtCacheSize">250</prop>
+				<prop key="prepStmtCacheSqlLimit">2048</prop>
+				<prop key="useServerPrepStmts">true</prop>
+				<prop key="characterEncoding">utf8</prop>
+				<prop key="useUnicode">true</prop>
+			</props>
+		</property>
+	</bean>
+
+	<bean id="tweetinfoDataSource" class="com.zaxxer.hikari.HikariDataSource"
+		destroy-method="close">
+		<constructor-arg ref="tweetinfoHikariConfig" />
+	</bean>
+	<bean id="tweetinfoHikariConfig" class="com.zaxxer.hikari.HikariConfig">
+		<property name="poolName" value="springHikariCP" />
+		<property name="driverClassName" value="${datasource.driverClassName}" />
+		<property name="jdbcUrl" value="${tweetinfo.datasource.url}" />
+		<property name="username" value="${tweetinfo.datasource.username}" />
+		<property name="password" value="${tweetinfo.datasource.password}" />
+		<property name="minimumIdle" value="${datasource.min-idle}" />
+		<property name="maximumPoolSize" value="${datasource.max-active}" />
+		<property name="connectionInitSql" value="set names utf8" />
+		<property name="dataSourceProperties">
+			<props>
+				<prop key="cachePrepStmts">true</prop>
+				<prop key="prepStmtCacheSize">250</prop>
+				<prop key="prepStmtCacheSqlLimit">2048</prop>
+				<prop key="useServerPrepStmts">true</prop>
+				<prop key="characterEncoding">utf8</prop>
+				<prop key="useUnicode">true</prop>
+			</props>
+		</property>
+	</bean>
+	
+	<bean id="directoryDataSource" class="com.zaxxer.hikari.HikariDataSource"
+		destroy-method="close">
+		<constructor-arg ref="directoryHikariConfig" />
+	</bean>
+	<bean id="directoryHikariConfig" class="com.zaxxer.hikari.HikariConfig">
+		<property name="poolName" value="springHikariCP" />
+		<property name="driverClassName" value="${datasource.driverClassName}" />
+		<property name="jdbcUrl" value="${directory.datasource.url}" />
+		<property name="username" value="${directory.datasource.username}" />
+		<property name="password" value="${directory.datasource.password}" />
+		<property name="minimumIdle" value="${datasource.min-idle}" />
+		<property name="maximumPoolSize" value="${datasource.max-active}" />
+		<property name="connectionInitSql" value="set names utf8" />
+		<property name="dataSourceProperties">
+			<props>
+				<prop key="cachePrepStmts">true</prop>
+				<prop key="prepStmtCacheSize">250</prop>
+				<prop key="prepStmtCacheSqlLimit">2048</prop>
+				<prop key="useServerPrepStmts">true</prop>
+				<prop key="characterEncoding">utf8</prop>
+				<prop key="useUnicode">true</prop>
+			</props>
+		</property>
+	</bean>
+	
+	
+	<bean id="baoyueDataSource" class="com.zaxxer.hikari.HikariDataSource"
+		destroy-method="close">
+		<constructor-arg ref="baoyueHikariConfig" />
+	</bean>
+	<bean id="baoyueHikariConfig" class="com.zaxxer.hikari.HikariConfig">
+		<property name="poolName" value="springHikariCP" />
+		<property name="driverClassName" value="${datasource.driverClassName}" />
+		<property name="jdbcUrl" value="${baoyue.datasource.url}" />
+		<property name="username" value="${baoyue.datasource.username}" />
+		<property name="password" value="${baoyue.datasource.password}" />
+		<property name="minimumIdle" value="${datasource.min-idle}" />
+		<property name="maximumPoolSize" value="${datasource.max-active}" />
+		<property name="connectionInitSql" value="set names utf8" />
+		<property name="dataSourceProperties">
+			<props>
+				<prop key="cachePrepStmts">true</prop>
+				<prop key="prepStmtCacheSize">250</prop>
+				<prop key="prepStmtCacheSqlLimit">2048</prop>
+				<prop key="useServerPrepStmts">true</prop>
+				<prop key="characterEncoding">utf8</prop>
+				<prop key="useUnicode">true</prop>
+			</props>
+		</property>
+	</bean>
+	
+	<bean id="youpiaoDataSource" class="com.zaxxer.hikari.HikariDataSource"
+		destroy-method="close">
+		<constructor-arg ref="youpiaoHikariConfig" />
+	</bean>
+	<bean id="youpiaoHikariConfig" class="com.zaxxer.hikari.HikariConfig">
+		<property name="poolName" value="springHikariCP" />
+		<property name="driverClassName" value="${datasource.driverClassName}" />
+		<property name="jdbcUrl" value="${youpiao.datasource.url}" />
+		<property name="username" value="${youpiao.datasource.username}" />
+		<property name="password" value="${youpiao.datasource.password}" />
+		<property name="minimumIdle" value="${datasource.min-idle}" />
+		<property name="maximumPoolSize" value="${datasource.max-active}" />
+		<property name="connectionInitSql" value="set names utf8" />
+		<property name="dataSourceProperties">
+			<props>
+				<prop key="cachePrepStmts">true</prop>
+				<prop key="prepStmtCacheSize">250</prop>
+				<prop key="prepStmtCacheSqlLimit">2048</prop>
+				<prop key="useServerPrepStmts">true</prop>
+				<prop key="characterEncoding">utf8</prop>
+				<prop key="useUnicode">true</prop>
+			</props>
+		</property>
+	</bean>
+	
+    <!-- 多数据源datasource -->
+	 <bean id="multipleDataSource" class="com.qbao.recommend.respositoy.mysql.database.MultipleDataSource">
+        <property name="defaultTargetDataSource" ref="merchantMiddleDataSource"/>
+        <property name="targetDataSources">
+            <map>
+                <entry key="${merchant.datasource.key}" value-ref="${merchant.datasource.key}"/>
+                <entry key="${qbaochou.datasource.key}" value-ref="${qbaochou.datasource.key}"/>
+                <entry key="${merchant_middle.datasource.key}" value-ref="${merchant_middle.datasource.key}"/>
+                <entry key="${recommend.datasource.key}" value-ref="${recommend.datasource.key}"/>
+                <entry key="${agent.datasource.key}" value-ref="${agent.datasource.key}"/>
+                <entry key="${doctor.datasource.key}" value-ref="${doctor.datasource.key}"/>
+                 <entry key="${user.blacklist.datasource.key}" value-ref="${user.blacklist.datasource.key}"/>
+                <entry key="${shop.blacklist.datasource.key}" value-ref="${shop.blacklist.datasource.key}"/>
+                <entry key="${hyip.task.datasource.key}" value-ref="${hyip.task.datasource.key}"/>
+                <entry key="${task.activity.datasource.key}" value-ref="${task.activity.datasource.key}"/>
+                <entry key="${tweetinfo.datasource.key}" value-ref="${tweetinfo.datasource.key}"/>
+                <entry key="${directory.datasource.key}" value-ref="${directory.datasource.key}"/>
+                <entry key="${baoyue.datasource.key}" value-ref="${baoyue.datasource.key}"/>
+                <entry key="${youpiao.datasource.key}" value-ref="${youpiao.datasource.key}"/>
+            </map>
+        </property>
+    </bean>
+    
+    
+	
+    
+    
+    <!-- 配置sqlSessionFactory -->
+	<bean id="multipleSqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+		<!-- 实例化sqlSessionFactory时需要使用上述配置好的数据源以及SQL映射文件 -->
+		<property name="dataSource" ref="multipleDataSource" />
+		<property name="typeAliasesPackage" value="com.qbao.recommend.respositoy.mysql.model" />
+		<property name="mapperLocations" value="classpath:/mybatis/mapping/*.xml" />
+	</bean>
+	<!-- 配置扫描器 -->
+	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+		<!-- 扫描包以及它的子包下的所有映射接口类 -->
+		<property name="basePackage" value="com.qbao.recommend.respositoy.mysql.dao" />
+		<property name="sqlSessionFactoryBeanName" value="multipleSqlSessionFactory" />
+	</bean>
+    
+    
+	
+ 	<!-- 配置事务管理器 -->
+	<bean id="txManager"
+		class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+		<property name="dataSource" ref="multipleDataSource" />
+	</bean>
+	<!-- 采用@Transactional注解方式来使用事务 -->
+	<tx:annotation-driven transaction-manager="txManager" />
+
+   <!-- 配置数据库注解aop -->
+	<aop:aspectj-autoproxy></aop:aspectj-autoproxy>
+	<aop:config>
+		<aop:aspect id="redisAspects" ref="redisCacheAspect">
+			<aop:around method="doAround" pointcut="@annotation(com.qbao.recommend.respositoy.redis.cache.annotation.RedisCache)" /> 
+		</aop:aspect>
+	</aop:config>
+	
+	<!-- 导入依赖redis的数据源 -->
+    <import resource="classpath*:/redis/spring-redis.xml"/>
+</beans>
+
+ 
+ 

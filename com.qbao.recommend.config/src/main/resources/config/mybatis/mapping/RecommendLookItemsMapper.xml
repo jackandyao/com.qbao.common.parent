@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.qbao.recommend.respositoy.mysql.dao.RecommendLookItemsDao">
+	<resultMap type="RecommendLookItems" id="RecommendLookItemsMap">
+		<result column="id" property="id" />
+		<result column="items" property="items" />
+		<result column="type" property="type" />
+	</resultMap>
+</mapper>

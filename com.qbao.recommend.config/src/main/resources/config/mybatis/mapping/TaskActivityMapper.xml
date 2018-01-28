@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.qbao.recommend.respositoy.mysql.dao.TaskActivityDao">
+	<resultMap id="TaskActivityMap" type="TaskActivity">
+		<result column="id" property="id" />
+		<result column="activity_name" property="activity_name" />
+		<result column="activity_desc" property="activity_desc" />
+		<result column="activity_img_url" property="activity_img_url" />
+		<result column="activity_small_img_url" property="activity_small_img_url" />
+		<result column="user_id" property="user_id" />
+		<result column="refer_id" property="refer_id" />
+		<result column="start_date" property="start_date" />
+		<result column="end_date" property="end_date" />
+		<result column="days" property="days" />
+		<result column="weight" property="weight" />
+		<result column="reward" property="reward" />
+		<result column="extra_reward" property="extra_reward" />
+		<result column="margins" property="margins" />
+		<result column="penalty" property="penalty" />
+		<result column="issue_platform" property="issue_platform" />
+		<result column="plan_id" property="plan_id" />
+		<result column="receive_count" property="receive_count" />
+		<result column="stock" property="stock" />
+		<result column="cycle_days" property="cycle_days" />
+		<result column="fee" property="fee" />
+		<result column="merchant_name" property="merchant_name" />
+		<result column="total_num" property="total_num" />
+		<result column="one_day_num" property="one_day_num" />
+		<result column="frame_num" property="frame_num" />
+		<result column="frame_time" property="frame_time" />
+		<result column="video_id" property="video_id" />
+		<result column="limit_day_everybody" property="limit_day_everybody" />
+	</resultMap>
+
+
+</mapper>

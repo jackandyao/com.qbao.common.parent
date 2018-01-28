@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<!DOCTYPE mycat:schema SYSTEM "schema.dtd">
+<mycat:schema xmlns:mycat="http://org.opencloudb/">
+
+	<schema name="base_user_schema" checkSQLschema="false" sqlMaxLimit="100" dataNode="base_user_datanode"></schema>
+	<dataNode name="base_user_datanode" dataHost="base_user_datahost" database="base_user" />
+	<dataHost name="base_user_datahost" maxCon="500" minCon="20" balance="1"
+		writeType="0" dbType="mysql" dbDriver="native" switchType="2" slaveThreshold="100">
+		<heartbeat>show slave status</heartbeat>
+		<writeHost host="hostM1" url="172.16.14.111:3306" user="root" password="recsys123" />
+		<writeHost host="hostS1" url="172.16.14.112:3306" user="root" password="recsys123" />
+	    <writeHost host="hostS2" url="172.16.14.113:3306" user="root" password="recsys123" />
+	</dataHost>
+	
+	<schema name="agent_schema" checkSQLschema="false" sqlMaxLimit="100" dataNode="agent_datanode"></schema>
+	<dataNode name="agent_datanode" dataHost="agent_datahost" database="agent" />
+	<dataHost name="agent_datahost" maxCon="500" minCon="20" balance="1"
+		writeType="0" dbType="mysql" dbDriver="native" switchType="2" slaveThreshold="100">
+		<heartbeat>show slave status</heartbeat>
+		<writeHost host="hostM1" url="172.16.14.111:3306" user="root" password="recsys123" />
+		<writeHost host="hostS1" url="172.16.14.112:3306" user="root" password="recsys123" />
+	    <writeHost host="hostS2" url="172.16.14.113:3306" user="root" password="recsys123" />
+	</dataHost>
+	
+	
+</mycat:schema>
+
